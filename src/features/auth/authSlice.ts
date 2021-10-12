@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
+import { setLocalState, clearLocalState } from 'app/localStorage';
 
 // Define auth-related types
 export interface AuthState {
@@ -36,15 +37,20 @@ export const authSlice = createSlice({
   reducers: {
     register: (state, action: PayloadAction<RegisterPayload>) => {
       const {name, email} = action.payload;
-
+      // Update Redux state
       state.isLoggedin = true;
       state.name = name.trim();
       state.email = email.trim();
+      // Update localstorage
+      setLocalState('auth', {isLoggedin: true, name: name, email: email});
     },
     logout: (state) => {
+      // Update Redux state
       state.isLoggedin = false;
       state.name = '';
       state.email = '';
+      // Update localstorage
+      clearLocalState();
     }
   },
 });
