@@ -1,0 +1,31 @@
+$bkg-color: #202322;
+
+.navbar {
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: gray;
+
+  background-color: $bkg-color;
+  height: 50px;
+  
+  ul.left {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      float: left; // make the li horizonal
+      a {
+        text-decoration: none;
+        display: block;
+        padding: 0 10px;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .right {
+    color: #ffffff;
+  }
+}
