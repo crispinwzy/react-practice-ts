@@ -1,11 +1,19 @@
-import { Link } from 'react-router-dom';
+import { FunctionComponent } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from 'app/hooks';
 import { AuthState, selectAuth, logout} from 'features/auth/authSlice';
 import './Navbar.scss';
 
-export function Navbar() {
+export const Navbar: FunctionComponent = () => {
   const dispatch = useAppDispatch();
   const authState: AuthState = useAppSelector(selectAuth);
+  const history = useHistory();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    alert("Logged out!");
+    history.push('/register');
+  }
 
   return (
     <nav className="navbar">
@@ -17,7 +25,7 @@ export function Navbar() {
 
       <div className="right">
         Hello, {authState.isLoggedin ? authState.name : 'Guest'}!
-        {authState.isLoggedin && <button onClick={() => dispatch(logout())}>Logout</button>}
+        {authState.isLoggedin && <button onClick={handleLogout}>Logout</button>}
       </div>
     </nav>
   );
