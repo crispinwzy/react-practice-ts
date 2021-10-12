@@ -80,7 +80,7 @@ export function Register() {
     return (
       <div className="register-page">
         <div className="register-form">
-          <h3>Register</h3>
+          <h3>Register as a dev</h3>
           <div className="form-field">
             <span className="form-label">Name</span>
             <input
@@ -109,7 +109,7 @@ export function Register() {
           </div>
 
           <div className="form-action">
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit}>Register</button>
           </div>
         </div>
       </div>
