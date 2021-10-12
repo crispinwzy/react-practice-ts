@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useAppDispatch } from '../../app/hooks';
-import { RegisterPayload, register } from '../auth/authSlice';
+import { Redirect } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { AuthState, selectAuth, RegisterPayload, register } from '../auth/authSlice';
 
 export function Register() {
   const dispatch = useAppDispatch();
@@ -19,34 +20,39 @@ export function Register() {
     dispatch(register(payload));
   }
 
-  return (
-    <div>
-      <h3>Register</h3>
+  const authState: AuthState = useAppSelector(selectAuth);
+  if (authState.isLoggedin) {
+    return <Redirect to={{ pathname: '/profile' }} />
+  } else {
+    return (
       <div>
-        <span>Name</span>
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
+        <h3>Register</h3>
+        <div>
+          <span>Name</span>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
 
-      <div>
-        <span>Email</span>
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
+        <div>
+          <span>Email</span>
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-      <div>
-        <span>Password</span>
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
+        <div>
+          <span>Password</span>
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-      <button onClick={handleSubmit}>Submit</button>
-    </div>
-  );
+        <button onClick={handleSubmit}>Submit</button>
+      </div>
+    );
+  }
 }
