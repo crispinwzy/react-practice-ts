@@ -8,10 +8,10 @@ import {
   useHistory,
   useLocation
 } from 'react-router-dom';
-// import { Counter } from './features/counter/Counter';
 import { Navbar } from './components/navbar/Navbar';
 import routes from './app/routes';
-import './App.css';
+import { ProtectedRoute } from 'components/protectedRoute/ProtectedRoute';
+import './App.scss';
 
 function App() {
   return (
@@ -21,11 +21,19 @@ function App() {
         <Navbar />
 
         {/* Routes Registration */}
-        <Switch>
-          {routes.map(
-            ({path, component, exact}) => <Route key={path} path={path} component={component} exact={exact} />
-          )}
-        </Switch>
+        <div className="main-content">
+          <Switch>
+            {routes.map(
+              ({path, Component, exact, needLogin}) => {
+                if (!needLogin) {
+                  return <Route key={path} path={path} component={Component} exact={exact} />
+                } else {
+                  return <ProtectedRoute key={path} path={path} Component={Component} exact={exact} />
+                }
+              }
+            )}
+          </Switch>
+        </div>
       </div>
     </BrowserRouter>
   );

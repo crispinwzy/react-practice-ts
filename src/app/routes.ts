@@ -6,19 +6,20 @@ const routes = [
   {
     path: '/register',
     name: 'Register',
-    component: Register,
+    Component: Register,
     exact: true,
   },
   {
     path: '/profile',
     name: 'Profile',
-    component: Profile,
+    Component: Profile,
     exact: true,
+    needLogin: true,
   },
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    Component: Home,
     exact: true,
   }
 ];
