@@ -49,7 +49,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const { register } = authSlice.actions;
+export const { register, logout } = authSlice.actions;
 
 export const selectAuth = (state: RootState) => state.auth;
 

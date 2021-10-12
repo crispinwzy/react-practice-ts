@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 
-import { useAppSelector } from 'app/hooks';
-import { AuthState, selectAuth } from 'features/auth/authSlice';
+import { useAppSelector, useAppDispatch } from 'app/hooks';
+import { AuthState, selectAuth, logout} from 'features/auth/authSlice';
 
 export function Navbar() {
+  const dispatch = useAppDispatch();
   const authState: AuthState = useAppSelector(selectAuth);
 
   return (
@@ -16,6 +17,7 @@ export function Navbar() {
 
       <div>
         Hello, {authState.isLoggedin ? authState.name : 'Guest'}!
+        {authState.isLoggedin && <button onClick={() => dispatch(logout())}>Logout</button>}
       </div>
     </nav>
   );
