@@ -5,6 +5,7 @@ import { RegisterPayload, register } from '../auth/authSlice';
 export function Register() {
   const dispatch = useAppDispatch();
 
+  // Local states
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
