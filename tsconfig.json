@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "src", // for absolute import
     "target": "es5",
     "lib": [
       "dom",
