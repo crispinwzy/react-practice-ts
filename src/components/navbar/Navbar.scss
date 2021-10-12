@@ -1,4 +1,5 @@
 $bkg-color: #202322;
+$font-color: #ffffff;
 
 .navbar {
   padding: 5px 20px;
@@ -9,23 +10,38 @@ $bkg-color: #202322;
 
   background-color: $bkg-color;
   height: 50px;
-  
-  ul.left {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    li {
-      float: left; // make the li horizonal
-      a {
-        text-decoration: none;
-        display: block;
-        padding: 0 10px;
-        color: #ffffff;
+  .left {
+    display: flex;
+    align-items: center;
+    .brand-name {
+      color: $font-color;
+      font-size: 20px;
+      font-weight: 600;
+      margin-right: 15px;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      li {
+        float: left; // make the li horizonal
+        a {
+          text-decoration: none;
+          display: block;
+          padding: 0 10px;
+          color: $font-color;
+        }
       }
     }
   }
 
   .right {
-    color: #ffffff;
+    color: $font-color;
+    .actions {
+      margin-left: 8px;
+      a {
+        color: $font-color;
+      }
+    }
   }
 }
