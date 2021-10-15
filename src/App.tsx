@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
-} from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Navbar } from './components/navbar/Navbar';
 import routes from './app/routes';
 import { ProtectedRoute } from 'components/protectedRoute/ProtectedRoute';

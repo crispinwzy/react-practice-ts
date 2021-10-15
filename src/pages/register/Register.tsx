@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { AuthState, selectAuth, RegisterPayload, register } from '../auth/authSlice';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
+import { AuthState, selectAuth, RegisterPayload, register } from 'app/store/slices/authSlice';
 import './Register.scss';
 
 export function Register() {

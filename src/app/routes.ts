@@ -1,6 +1,6 @@
-import { Home } from '../features/home/Home';
-import { Register } from '../features/register/Register';
-import { Profile } from '../features/profile/Profile';
+import { Home } from 'pages/home/Home';
+import { Register } from 'pages/register/Register';
+import { Profile } from 'pages/profile/Profile';
 
 const routes = [
   {

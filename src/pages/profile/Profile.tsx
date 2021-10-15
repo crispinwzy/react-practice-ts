@@ -1,5 +1,5 @@
-import { useAppSelector } from '../../app/hooks';
-import { AuthState, selectAuth } from '../auth/authSlice';
+import { useAppSelector } from 'app/hooks';
+import { AuthState, selectAuth } from 'app/store/slices/authSlice';
 import './Profile.scss';
 
 export function Profile() {
