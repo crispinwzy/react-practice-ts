@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { AuthState, selectAuth, RegisterPayload, register } from 'app/store/slices/authSlice';
 import './Register.scss';
+import { isValidEmail } from 'app/utils/validators';
 
 export function Register() {
   const dispatch = useAppDispatch();
@@ -48,21 +49,17 @@ export function Register() {
     } else {
       setNameValid({ valid: true, msg: '' })
     }
-    
+
     if (!email) {
       result = false;
       setEmailValid({ valid: false, msg: 'Email is required' });
+    } else if (!isValidEmail(email)) {
+      result = false;
+      setEmailValid({ valid: false, msg: 'Incorrect Email format' });
     } else {
       setEmailValid({ valid: true, msg: '' })
     }
 
-    if (!validateEmail(email)) {
-      result = false;
-      setEmailValid({ valid: false, msg: 'Incorrect Email format' });
-    } else {
-      setEmailValid({ valid: true, msg: '' });
-    }
-    
     if (!password) {
       result = false;
       setPasswordValid({ valid: false, msg: 'Password is required' });
@@ -115,9 +112,4 @@ export function Register() {
       </div>
     );
   }
-}
-
-function validateEmail(email: string) {
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
 }
