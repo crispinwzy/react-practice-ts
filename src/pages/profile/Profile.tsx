@@ -1,6 +1,7 @@
 import './Profile.scss';
 import { useAppSelector } from 'app/hooks';
-import { AuthState, selectAuth } from 'app/store/slices/authSlice';
+import { selectAuth } from 'app/store/slices/authSlice';
+import { AuthState } from 'app/models/Auth';
 import { Weather } from 'components/weather/Weather';
 
 export function Profile() {

@@ -1,7 +1,8 @@
 import { FunctionComponent } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useAppSelector } from 'app/hooks';
-import { AuthState, selectAuth } from 'app/store/slices/authSlice';
+import { selectAuth } from 'app/store/slices/authSlice';
+import { AuthState } from 'app/models/Auth';
 
 type ProtectedRouteProp = {
   path: string,

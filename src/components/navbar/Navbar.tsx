@@ -1,7 +1,8 @@
 import { FunctionComponent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from 'app/hooks';
-import { AuthState, selectAuth, logout} from 'app/store/slices/authSlice';
+import { selectAuth, logout} from 'app/store/slices/authSlice';
+import { AuthState } from 'app/models/Auth';
 import './Navbar.scss';
 
 export const Navbar: FunctionComponent = () => {
