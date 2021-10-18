@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
-import { AuthState, selectAuth, RegisterPayload, register } from 'app/store/slices/authSlice';
+import { selectAuth, RegisterPayload, register } from 'app/store/slices/authSlice';
+import { AuthState } from 'app/models/Auth';
 import './Register.scss';
 import { isValidEmail } from 'app/utils/validators';
 
@@ -12,10 +13,12 @@ export function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [speciality, setSpeciality] = useState('');
 
   const [nameValid, setNameValid] = useState({valid: true, msg: ''});
   const [emailValid, setEmailValid] = useState({valid: true, msg: ''});
   const [passwordValid, setPasswordValid] = useState({valid: true, msg: ''});
+  const [specialityValid, setSpecialityValid] = useState({valid: true, msg: ''});
 
   const handleSubmit = () => {
     // Trim inputs
@@ -33,11 +36,16 @@ export function Register() {
       name: name,
       email: email,
       password: password,
+      speciality: speciality,
     };
 
     // Dispatch 'register' action
     dispatch(register(payload));
     alert("Register sucessfully!");
+  }
+
+  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSpeciality(e.target.value);
   }
 
   const validateForm = () => {
@@ -65,6 +73,13 @@ export function Register() {
       setPasswordValid({ valid: false, msg: 'Password is required' });
     } else {
       setPasswordValid({ valid: true, msg: '' });
+    }
+
+    if (!speciality) {
+      result = false;
+      setSpecialityValid({ valid: false, msg: 'Speciality is required' });
+    } else {
+      setSpecialityValid({ valid: true, msg: '' });
     }
 
     return result;
@@ -103,6 +118,17 @@ export function Register() {
               onChange={(e) => setPassword(e.target.value)}
             />
             {!passwordValid.valid && <span className="error-msg">{passwordValid.msg}</span>}
+          </div>
+
+          <div className="form-field">
+            <span className="form-label">Speciality</span>
+            <label>
+              <input type="radio" name="speciality" value="front-end" onChange={handleOptionChange} /> Front-end
+            </label>
+            <label>
+              <input type="radio" name="speciality" value="back-end" onChange={handleOptionChange} /> Back-end
+            </label>
+            {!specialityValid.valid && <span className="error-msg">{specialityValid.msg}</span>}
           </div>
 
           <div className="form-action">

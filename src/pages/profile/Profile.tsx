@@ -14,6 +14,7 @@ export function Profile() {
         <p>isLoggedin: {auth.isLoggedin ? 'Yes' : 'No'}</p>
         <p>Name: {auth.name}</p>
         <p>Email: {auth.email}</p>
+        <p>Speciality: {auth.speciality}</p>
       </div>
 
       {/* // Weather component */}
